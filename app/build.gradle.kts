@@ -18,7 +18,6 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -44,14 +43,15 @@ android {
     }
 }
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.ui.graphics)
-    implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
+    implementation(project(":core:common"))
+    implementation(project(":core:navigation"))
+    implementation(project(":core:network"))
+    implementation(project(":core:ui"))
+    implementation(project(":auth:ui"))
+    implementation(project(":appointments:ui"))
+    implementation(project(":chat:ui"))
+    implementation(project(":journal:ui"))
+    implementation(project(":profile:ui"))
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
