@@ -5,4 +5,5 @@
     <string name="join_appointment_label">Join appointment</string>
     <string name="upcoming_appointments_label">Upcoming</string>
     <string name="past_appointments_label">Past</string>
+    <string name="refresh_appointments_label">Refresh Appointments</string>
 </resources>
