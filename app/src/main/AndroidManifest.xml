@@ -11,9 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fay">
         <activity
-            android:name=".MainActivity"
+            android:name=".FayActivity"
             android:exported="true"
-            android:label="@string/app_name"
             android:theme="@style/Theme.Fay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
