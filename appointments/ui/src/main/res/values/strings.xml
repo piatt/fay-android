@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="appointments_label">Appointments</string>
+    <string name="new_appointment_label">New</string>
+    <string name="join_appointment_label">Join appointment</string>
+    <string name="upcoming_appointments_label">Upcoming</string>
+    <string name="past_appointments_label">Past</string>
+</resources>
