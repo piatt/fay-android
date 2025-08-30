@@ -1,4 +1,4 @@
-package com.example.fay
+package com.example.fay.components
 
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -8,6 +8,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
@@ -29,7 +30,7 @@ fun FayBottomNavBar(navController: NavHostController) {
     NavigationBar {
         navItems.forEach { item ->
             val selected = navBackStackEntry?.destination?.hierarchy?.any {
-                it.route == item.screen.route
+                it.hasRoute(item.appRoute::class)
             } == true
 
             NavigationBarItem(
@@ -46,7 +47,7 @@ fun FayBottomNavBar(navController: NavHostController) {
                 },
                 selected = selected,
                 onClick = {
-                    navController.navigate(item.screen) {
+                    navController.navigate(route = item.appRoute) {
                         popUpTo(navController.graph.findStartDestination().id) {
                             saveState = true
                         }
