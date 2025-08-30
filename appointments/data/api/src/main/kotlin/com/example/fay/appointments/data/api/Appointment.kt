@@ -1,8 +1,7 @@
 package com.example.fay.appointments.data.api
 
-import kotlinx.serialization.Serializable
+import java.time.LocalDateTime
 
-@Serializable
 data class Appointment(
     val id: String,
     val patientId: String,
@@ -11,7 +10,7 @@ data class Appointment(
     val status: AppointmentStatus,
     val type: String,
     val recurrenceType: String,
-    val start: String,
-    val end: String,
+    val start: LocalDateTime,
+    val end: LocalDateTime,
     val duration: Int
 )

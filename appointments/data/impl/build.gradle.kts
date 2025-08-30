@@ -3,6 +3,8 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlin.kapt)
     alias(libs.plugins.kotlin.serialization)
 }
 android {
@@ -34,13 +36,27 @@ android {
     }
 }
 dependencies {
-    implementation(project(":core:common"))
-    
     implementation(libs.androidx.core.ktx)
+    implementation(project(":core:common"))
+    implementation(project(":core:network"))
+    implementation(project(":appointments:data:api"))
+    implementation(project(":auth:data:api"))
+
     implementation(libs.kotlin.coroutines.android)
+    implementation(libs.retrofit.android)
+    implementation(libs.retrofit.converter)
     implementation(libs.kotlin.serialization)
-    
+
+    // Hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+
     testImplementation(libs.junit)
+    testImplementation(libs.hilt.testing)
+    kaptTest(libs.hilt.compiler)
+
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.hilt.testing)
+    kaptAndroidTest(libs.hilt.compiler)
 }

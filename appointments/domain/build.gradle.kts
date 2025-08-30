@@ -35,6 +35,7 @@ android {
 }
 dependencies {
     implementation(project(":core:common"))
+    implementation(project(":appointments:data:api"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.kotlin.coroutines.android)
