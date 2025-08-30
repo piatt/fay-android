@@ -39,7 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
     implementation(libs.kotlin.coroutines.android)
-    implementation(libs.retrofit.android)
+    api(libs.retrofit.android)
     implementation(libs.retrofit.converter)
     implementation(libs.okhttp)
     implementation(libs.okhttp.logging)
