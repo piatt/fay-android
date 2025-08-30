@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":core:ui"))
     implementation(project(":appointments:data:api"))
     runtimeOnly(project(":appointments:data:impl"))
+    implementation(project(":appointments:domain"))
     
     // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
