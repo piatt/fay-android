@@ -42,9 +42,11 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
+    implementation(project(":core:network"))
     implementation(project(":core:ui"))
     implementation(project(":core:navigation"))
-    implementation(project(":auth:domain"))
+    implementation(project(":auth:data:api"))
+    runtimeOnly(project(":auth:data:impl"))
     
     // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
