@@ -2,4 +2,5 @@
 <resources>
     <string name="profile_label">Profile</string>
     <string name="coming_soon_label">Coming Soon!</string>
+    <string name="logout_label">Logout</string>
 </resources>
