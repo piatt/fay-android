@@ -4,7 +4,7 @@ import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 
 open class BottomNavItem(
-    val screen: Screen,
+    val appRoute: AppRoute,
     @StringRes val label: Int,
     @DrawableRes val icon: Int,
     @DrawableRes val selectedIcon: Int
