@@ -10,7 +10,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.example.fay.FayAppState
 import com.example.fay.appointments.ui.AppointmentsRoute
-import com.example.fay.appointments.ui.AppointmentsScreen
+import com.example.fay.appointments.ui.appointmentsNavGraph
 import com.example.fay.auth.ui.LoginRoute
 import com.example.fay.auth.ui.LoginScreen
 import com.example.fay.auth.ui.LoginViewModel
@@ -47,10 +47,7 @@ fun FayNavHost(
                 }
             )
         }
-        // TODO: Replace with AppointmentsNavGraph
-        composable<AppointmentsRoute> {
-            AppointmentsScreen()
-        }
+        appointmentsNavGraph(navController)
         composable<ChatRoute> {
             ChatScreen()
         }

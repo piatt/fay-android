@@ -42,9 +42,11 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
-    implementation(project(":core:ui"))
     implementation(project(":core:navigation"))
+    implementation(project(":core:network"))
+    implementation(project(":core:ui"))
     implementation(project(":appointments:data:api"))
+    runtimeOnly(project(":appointments:data:impl"))
     
     // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
@@ -61,7 +63,11 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.hilt.navigation.compose)
+    testImplementation(libs.hilt.testing)
+    androidTestImplementation(libs.hilt.testing)
     kapt(libs.hilt.compiler)
+    kaptTest(libs.hilt.compiler)
+    kaptAndroidTest(libs.hilt.compiler)
     
     testImplementation(libs.junit)
     testImplementation(libs.hilt.testing)

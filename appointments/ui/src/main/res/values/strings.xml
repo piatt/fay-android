@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="appointments_label">Appointments</string>
-    <string name="new_appointment_label">New</string>
+    <string name="new_appointment_button_label">New</string>
+    <string name="new_appointment_description">Book a new appointment</string>
     <string name="join_appointment_label">Join appointment</string>
     <string name="upcoming_appointments_label">Upcoming</string>
     <string name="past_appointments_label">Past</string>
-    <string name="refresh_appointments_label">Refresh Appointments</string>
+    <string name="back_button_description">Back button</string>
+    <string name="coming_soon_label">Coming Soon!</string>
 </resources>
