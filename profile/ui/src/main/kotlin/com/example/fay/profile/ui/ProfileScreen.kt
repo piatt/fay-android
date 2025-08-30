@@ -26,7 +26,7 @@ fun ProfileScreen(
     ) {
         CenteredCallout(
             image = R.drawable.ic_user,
-            message = R.string.coming_soon_label,
+            messageResId = R.string.coming_soon_label,
             modifier = Modifier.align(Alignment.Center)
         )
         Button(

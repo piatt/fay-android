@@ -8,7 +8,7 @@ import com.example.fay.core.ui.components.CenteredCallout
 fun JournalScreen(modifier: Modifier = Modifier) {
     CenteredCallout(
         image = R.drawable.ic_journal,
-        message = R.string.coming_soon_label,
+        messageResId = R.string.coming_soon_label,
         modifier = modifier
     )
 }

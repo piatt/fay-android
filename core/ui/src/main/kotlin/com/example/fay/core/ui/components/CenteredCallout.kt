@@ -24,8 +24,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CenteredCallout(
     @DrawableRes image: Int,
-    @StringRes message: Int,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    @StringRes messageResId: Int? = null,
+    message: String? = null
 ) {
     Column(
         modifier = modifier
@@ -41,7 +42,7 @@ fun CenteredCallout(
             contentDescription = null
         )
         Text(
-            text = stringResource(message),
+            text = messageResId?.let { stringResource(it) } ?: message ?: "",
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.headlineMedium,
             modifier = Modifier.padding(32.dp)
