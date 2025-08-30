@@ -8,6 +8,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.unit.dp
 import com.example.fay.core.ui.components.CenteredCallout
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -19,7 +20,8 @@ fun JournalScreen(modifier: Modifier = Modifier) {
             TopAppBar(
                 title = {
                     Text(text = stringResource(R.string.journal_label))
-                }
+                },
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
     ) { paddingValues ->

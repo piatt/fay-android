@@ -24,7 +24,7 @@ class DefaultAuthRepository @Inject constructor(
 
     override fun getAuthToken(): String? = authToken.value
 
-    override suspend fun login(
+    override fun login(
         email: String,
         password: String
     ): Flow<Resource<Boolean>> = flow {

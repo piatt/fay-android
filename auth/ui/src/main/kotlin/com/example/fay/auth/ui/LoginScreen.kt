@@ -66,7 +66,7 @@ fun LoginScreen(
                 },
                 label = { Text(stringResource(R.string.username_label)) },
                 modifier = Modifier.fillMaxWidth(),
-                enabled = !state.isLoading
+                enabled = !state.loading
             )
             OutlinedTextField(
                 value = password,
@@ -77,7 +77,7 @@ fun LoginScreen(
                 label = { Text(stringResource(R.string.password_label)) },
                 visualTransformation = PasswordVisualTransformation(),
                 modifier = Modifier.fillMaxWidth(),
-                enabled = !state.isLoading
+                enabled = !state.loading
             )
             Button(
                 onClick = {
@@ -87,9 +87,9 @@ fun LoginScreen(
                     .fillMaxWidth()
                     .padding(vertical = 8.dp)
                     .height(56.dp),
-                enabled = !state.isLoading
+                enabled = !state.loading
             ) {
-                if (state.isLoading) {
+                if (state.loading) {
                     CircularProgressIndicator()
                 } else {
                     Text(stringResource(R.string.login_label))

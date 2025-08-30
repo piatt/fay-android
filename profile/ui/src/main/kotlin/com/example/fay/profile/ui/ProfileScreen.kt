@@ -29,7 +29,8 @@ fun ProfileScreen(
             TopAppBar(
                 title = {
                     Text(text = stringResource(R.string.profile_label))
-                }
+                },
+                modifier = Modifier.padding(horizontal = 16.dp)
             )
         }
     ) { paddingValues ->

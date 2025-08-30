@@ -30,7 +30,7 @@ class LoginViewModel @Inject constructor(
             authRepository.login(email, password).collect { resource ->
                 _uiState.update {
                     when (resource) {
-                        is Resource.Loading -> LoginUiState(isLoading = true)
+                        is Resource.Loading -> LoginUiState(loading = true)
                         is Resource.Success -> LoginUiState(authenticated = true)
                         is Resource.Error -> LoginUiState(errorMessage = resource.message)
                         is Resource.Exception -> {
