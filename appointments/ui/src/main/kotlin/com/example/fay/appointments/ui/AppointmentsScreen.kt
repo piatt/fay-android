@@ -2,6 +2,7 @@ package com.example.fay.appointments.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +18,6 @@ import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -34,6 +33,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -55,7 +55,10 @@ fun AppointmentsScreen(
         topBar = {
             TopAppBar(
                 title = {
-                    Text(text = stringResource(R.string.appointments_label))
+                    Text(
+                        text = stringResource(R.string.appointments_label),
+                        style = MaterialTheme.typography.headlineLarge
+                    )
                 },
                 actions = {
                     OutlinedButton(
@@ -74,68 +77,61 @@ fun AppointmentsScreen(
             )
         }
     ) { paddingValues ->
-        if (state.loading) {
-            CircularProgressIndicator()
-        } else if (state.errorMessage != null) {
-            PullToRefreshBox(
-                isRefreshing = state.loading,
-                onRefresh = onRefresh,
-                modifier = modifier.fillMaxSize()
-            ) {
+        PullToRefreshBox(
+            isRefreshing = state.loading,
+            onRefresh = onRefresh,
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+        ) {
+            if (state.errorMessage != null) {
                 CenteredCallout(
                     image = R.drawable.ic_calendar,
-                    message = state.errorMessage,
-                    modifier = Modifier.padding(paddingValues)
+                    message = state.errorMessage
                 )
-            }
-        } else {
-            val pagerState = rememberPagerState(pageCount = { 2 })
-            val scope = rememberCoroutineScope()
-            
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-            ) {
-                TabRow(selectedTabIndex = pagerState.currentPage) {
-                    Tab(
-                        selected = pagerState.currentPage == 0,
-                        onClick = {
-                            scope.launch {
-                                pagerState.animateScrollToPage(0)
-                            }
-                        },
-                        text = { Text(stringResource(R.string.upcoming_appointments_label)) }
-                    )
-                    Tab(
-                        selected = pagerState.currentPage == 1,
-                        onClick = {
-                            scope.launch {
-                                pagerState.animateScrollToPage(1)
-                            }
-                        },
-                        text = { Text(stringResource(R.string.past_appointments_label)) }
-                    )
-                }
-                HorizontalPager(
-                    state = pagerState,
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(top = 16.dp)
-                ) { page ->
-                    when (page) {
-                        0 -> AppointmentsList(
-                            appointments = state.upcomingAppointments,
-                            highlightFirstAppointment = true,
-                            isRefreshing = state.loading,
-                            onRefresh = onRefresh
+            } else {
+                val pagerState = rememberPagerState(pageCount = { 2 })
+                val scope = rememberCoroutineScope()
+
+                Column(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    TabRow(selectedTabIndex = pagerState.currentPage) {
+                        Tab(
+                            selected = pagerState.currentPage == 0,
+                            onClick = {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(0)
+                                }
+                            },
+                            text = { Text(stringResource(R.string.upcoming_appointments_label)) }
                         )
-                        1 -> AppointmentsList(
-                            appointments = state.pastAppointments,
-                            highlightFirstAppointment = false,
-                            isRefreshing = state.loading,
-                            onRefresh = onRefresh
+                        Tab(
+                            selected = pagerState.currentPage == 1,
+                            onClick = {
+                                scope.launch {
+                                    pagerState.animateScrollToPage(1)
+                                }
+                            },
+                            text = { Text(stringResource(R.string.past_appointments_label)) }
                         )
+                    }
+                    HorizontalPager(
+                        state = pagerState,
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(top = 16.dp)
+                    ) { page ->
+                        when (page) {
+                            0 -> AppointmentsList(
+                                appointments = state.upcomingAppointments,
+                                highlightFirstAppointment = true
+                            )
+                            1 -> AppointmentsList(
+                                appointments = state.pastAppointments,
+                                highlightFirstAppointment = false
+                            )
+                        }
                     }
                 }
             }
@@ -143,40 +139,33 @@ fun AppointmentsScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun AppointmentsList(
     appointments: List<AppointmentState>,
     highlightFirstAppointment: Boolean,
-    isRefreshing: Boolean,
-    onRefresh: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    PullToRefreshBox(
-        isRefreshing = isRefreshing,
-        onRefresh = onRefresh,
-        modifier = modifier.fillMaxSize()
-    ) {
-        if (appointments.isEmpty()) {
-            CenteredCallout(
-                image = R.drawable.ic_calendar,
-                message = stringResource(R.string.coming_soon_label)
-            )
-        } else {
-            LazyColumn(
-                modifier = Modifier.padding(horizontal = 16.dp),
-                verticalArrangement = Arrangement.spacedBy(16.dp)
-            ) {
-                itemsIndexed(
-                    items = appointments,
-                    key = { _, appointment -> appointment.id }
-                ) { index, appointment ->
-                    AppointmentCard(
-                        appointment = appointment,
-                        highlightCard = highlightFirstAppointment && index == 0,
-                        modifier = Modifier.fillMaxWidth()
-                    )
-                }
+    if (appointments.isEmpty()) {
+        CenteredCallout(
+            image = R.drawable.ic_calendar,
+            message = stringResource(R.string.coming_soon_label)
+        )
+    } else {
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(horizontal = 16.dp),
+            verticalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            itemsIndexed(
+                items = appointments,
+                key = { _, appointment -> appointment.id }
+            ) { index, appointment ->
+                AppointmentCard(
+                    appointment = appointment,
+                    highlightCard = highlightFirstAppointment && index == 0,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
@@ -191,24 +180,25 @@ private fun AppointmentCard(
     if (highlightCard) {
         Card(
             modifier = modifier,
-            shape = RoundedCornerShape(12.dp),
-            colors = CardDefaults.cardColors(containerColor = Color.White),
-            elevation = CardDefaults.cardElevation(defaultElevation = 1.dp)
+            shape = RoundedCornerShape(12.dp)
         ) {
             AppointmentCardContent(
                 appointment = appointment,
-                showJoinAppointmentButton = true
+                showJoinAppointmentButton = true,
+                modifier = Modifier.padding(16.dp)
             )
         }
     } else {
         OutlinedButton(
             onClick = {},
             modifier = modifier,
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(12.dp),
+            contentPadding = PaddingValues(0.dp)
         ) {
             AppointmentCardContent(
                 appointment = appointment,
-                showJoinAppointmentButton = false
+                showJoinAppointmentButton = false,
+                modifier = Modifier.padding(16.dp)
             )
         }
     }
@@ -218,10 +208,11 @@ private fun AppointmentCard(
 @Composable
 private fun AppointmentCardContent(
     appointment: AppointmentState,
-    showJoinAppointmentButton: Boolean
+    showJoinAppointmentButton: Boolean,
+    modifier: Modifier = Modifier
 ) {
     Column(
-        modifier = Modifier.padding(16.dp)
+        modifier = modifier
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -232,8 +223,8 @@ private fun AppointmentCardContent(
             ) {
                 Text(
                     text = appointment.formattedMonth,
-                    style = MaterialTheme.typography.labelSmall,
-                    color = Color(0xFF6366F1), // Blue color
+                    style = MaterialTheme.typography.labelMedium,
+                    color = colorResource(com.example.fay.core.ui.R.color.fay_primary),
                     fontWeight = FontWeight.Medium
                 )
                 Text(

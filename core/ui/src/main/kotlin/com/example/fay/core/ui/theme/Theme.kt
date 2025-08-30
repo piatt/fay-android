@@ -15,7 +15,7 @@ import com.example.fay.core.ui.R
 @Composable
 fun FayTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
