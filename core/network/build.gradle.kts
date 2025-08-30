@@ -38,6 +38,7 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
+    implementation(project(":auth:data:api"))
     implementation(libs.kotlin.coroutines.android)
     api(libs.retrofit.android)
     implementation(libs.retrofit.converter)

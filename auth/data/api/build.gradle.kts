@@ -38,6 +38,8 @@ dependencies {
     implementation(project(":core:common"))
     implementation(libs.kotlin.coroutines.android)
     implementation(libs.kotlin.serialization)
+
+    implementation(libs.retrofit.android)
     
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

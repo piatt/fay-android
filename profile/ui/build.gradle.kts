@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:ui"))
     implementation(project(":core:navigation"))
+    implementation(project(":auth:ui"))
     
     // Compose BOM
     implementation(platform(libs.androidx.compose.bom))
