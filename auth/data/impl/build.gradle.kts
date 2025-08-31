@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.retrofit.android)
     implementation(libs.retrofit.converter)
     implementation(libs.kotlin.serialization)
+    implementation(libs.datastore)
     
     // Hilt
     implementation(libs.hilt.android)

@@ -1,12 +1,14 @@
 package com.example.fay.auth.data.api
 
+import kotlinx.coroutines.runBlocking
 import okhttp3.Interceptor
 import okhttp3.Response
 
 class AuthInterceptor(private val authRepository: AuthRepository) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        return authRepository.getAuthToken()?.let {
+        val authToken = runBlocking { authRepository.getAuthToken() }
+        return authToken?.let {
             val authenticatedRequest = originalRequest.newBuilder()
                 .header("Authorization", "Bearer $it")
                 .build()

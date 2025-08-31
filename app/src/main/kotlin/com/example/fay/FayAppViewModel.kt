@@ -34,6 +34,8 @@ class FayAppViewModel @Inject constructor(
     }
 
     fun logout() {
-        authRepository.logout()
+        viewModelScope.launch {
+            authRepository.logout()
+        }
     }
 }
