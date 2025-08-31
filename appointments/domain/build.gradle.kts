@@ -12,6 +12,4 @@ kotlin {
 }
 dependencies {
     implementation(project(":appointments:data:api"))
-    testImplementation(libs.junit)
-    testImplementation(libs.kotlin.test)
 }

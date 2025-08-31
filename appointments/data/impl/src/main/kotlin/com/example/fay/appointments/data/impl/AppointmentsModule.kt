@@ -1,7 +1,7 @@
 package com.example.fay.appointments.data.impl
 
 import com.example.fay.appointments.data.api.AppointmentsRepository
-import com.example.fay.core.common.dispatcher.DispatcherProvider
+import com.example.fay.core.common.DispatcherProvider
 import com.example.fay.core.network.AuthenticatedRetrofit
 import dagger.Module
 import dagger.Provides

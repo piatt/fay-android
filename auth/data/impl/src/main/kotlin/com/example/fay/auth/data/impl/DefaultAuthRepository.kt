@@ -5,7 +5,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import com.example.fay.auth.data.api.AuthRepository
-import com.example.fay.core.common.dispatcher.DispatcherProvider
+import com.example.fay.core.common.DispatcherProvider
 import com.example.fay.core.data.Resource
 import com.example.fay.core.network.NoNetworkException
 import kotlinx.coroutines.flow.Flow

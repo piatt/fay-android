@@ -2,7 +2,7 @@ package com.example.fay.appointments.data.impl
 
 import com.example.fay.appointments.data.api.Appointment
 import com.example.fay.appointments.data.api.AppointmentsRepository
-import com.example.fay.core.common.dispatcher.DispatcherProvider
+import com.example.fay.core.common.DispatcherProvider
 import com.example.fay.core.data.Resource
 import com.example.fay.core.network.NoNetworkException
 import kotlinx.coroutines.flow.Flow

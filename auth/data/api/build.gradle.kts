@@ -13,5 +13,5 @@ kotlin {
 dependencies {
     implementation(project(":core:data"))
     implementation(libs.kotlin.coroutines.core)
-    implementation(libs.retrofit.android)
+    implementation(libs.okhttp)
 }

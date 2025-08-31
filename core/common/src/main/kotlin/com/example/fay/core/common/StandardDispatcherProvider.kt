@@ -1,4 +1,4 @@
-package com.example.fay.core.common.dispatcher
+package com.example.fay.core.common
 
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

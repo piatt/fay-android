@@ -1,7 +1,5 @@
-package com.example.fay.core.common.di
+package com.example.fay.core.common
 
-import com.example.fay.core.common.dispatcher.DispatcherProvider
-import com.example.fay.core.common.dispatcher.StandardDispatcherProvider
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
