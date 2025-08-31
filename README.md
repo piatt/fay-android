@@ -82,6 +82,7 @@ Here is a brief explanation of some of the challenges I faced on this project:
   than I anticipated to break everything out and ensure the dependencies between modules made sense, particularly around shared core modules and
   what should be an Android library module vs a pure Kotlin module. Having worked in modular codebases, shared build logic via convention plugins
   makes things so much cleaner, but that was a lower priority than other aspects of the project, and something I would likely tackle with more time.
+  One thing that I am proud of is using AI to help me create a function used by settings.gradle.kts to automatically and recursively include modules.
 
 - I definitely wanted to include more test coverage, especially of the various ViewModels in the codebase, but for the sake of time I stuck to
   primarily testing the data and domain layers. I used AI to generate the tests, so they are not as clean and encapsulated and abstracted into
