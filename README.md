@@ -14,7 +14,7 @@
     - Log out from the profile screen and observe the clean transition back to login
 * Run the unit tests
 * Browse the code
-* Watch the demo (video)[https://drive.google.com/file/d/1zBwQpreh-OMbkSV74_tMB0h-16BrCv1k/view?usp=drive_link],
+* Watch the [demo video](https://drive.google.com/file/d/1zBwQpreh-OMbkSV74_tMB0h-16BrCv1k/view?usp=drive_link),
   where I screen recorded myself walking through some of the user journeys and testing authentication and network connectivity cases.
 
 ## Notes
@@ -102,7 +102,7 @@ Here is what I would have done with more time or how I would continue to enhance
 - With more time, and to make this app more production ready, I would love to properly configure Proguard/R8 for the codebase, and create additional build types that use proper minification/obfuscation configuration.
 - With more time, I would love to add tracing and analytics to capture user interaction as well as network usage and connectivity changes. For that, I would typically use Sentry and DataDog SDKs.
 
-Final notes:
+Final thoughts:
 
 * I added code comments to explain important methods and properties as necessary, citing sources where applicable.
 * I hope you enjoy reading my code. I strive for concise and minimalistic code, while holding myself to a high standard of organization, efficiency, and testability.
