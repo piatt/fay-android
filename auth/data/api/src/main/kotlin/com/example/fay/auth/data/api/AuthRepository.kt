@@ -1,6 +1,6 @@
 package com.example.fay.auth.data.api
 
-import com.example.fay.core.common.result.Resource
+import com.example.fay.core.data.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface AuthRepository {

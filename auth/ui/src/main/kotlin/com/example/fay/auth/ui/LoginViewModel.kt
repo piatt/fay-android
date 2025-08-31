@@ -3,7 +3,7 @@ package com.example.fay.auth.ui
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fay.auth.data.api.AuthRepository
-import com.example.fay.core.common.result.Resource
+import com.example.fay.core.data.Resource
 import com.example.fay.core.network.NoNetworkException
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow

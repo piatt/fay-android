@@ -39,6 +39,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(project(":core:common"))
     implementation(project(":core:network"))
+    implementation(project(":core:data"))
     implementation(project(":appointments:data:api"))
     implementation(project(":auth:data:api"))
 

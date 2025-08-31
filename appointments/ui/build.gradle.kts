@@ -44,6 +44,7 @@ dependencies {
     implementation(project(":core:common"))
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
+    implementation(project(":core:data"))
     implementation(project(":core:ui"))
     implementation(project(":appointments:data:api"))
     runtimeOnly(project(":appointments:data:impl"))
