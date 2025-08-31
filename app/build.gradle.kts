@@ -47,6 +47,7 @@ dependencies {
     implementation(project(":core:navigation"))
     implementation(project(":core:network"))
     implementation(project(":core:ui"))
+    implementation(project(":auth:data:api"))
     implementation(project(":auth:ui"))
     implementation(project(":appointments:ui"))
     implementation(project(":chat:ui"))
@@ -55,6 +56,7 @@ dependencies {
 
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.lifecycle.runtime.compose)
     implementation(libs.androidx.activity.compose)

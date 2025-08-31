@@ -27,7 +27,10 @@ class FayAppViewModel @Inject constructor(
         viewModelScope.launch {
             authRepository.authenticated.collect { authenticated ->
                 _state.update {
-                    it.copy(authenticated = authenticated)
+                    it.copy(
+                        loading = false,
+                        authenticated = authenticated
+                    )
                 }
             }
         }

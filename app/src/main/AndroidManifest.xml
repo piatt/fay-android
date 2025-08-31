@@ -8,11 +8,10 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Fay">
+        android:theme="@style/Theme.Fay.Splash">
         <activity
             android:name=".FayActivity"
-            android:exported="true"
-            android:theme="@style/Theme.Fay">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
