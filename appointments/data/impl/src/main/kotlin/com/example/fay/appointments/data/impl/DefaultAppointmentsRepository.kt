@@ -15,6 +15,15 @@ class DefaultAppointmentsRepository @Inject constructor(
     private val apiService: AppointmentsApiService,
     private val dispatcherProvider: DispatcherProvider
 ): AppointmentsRepository {
+    /**
+     * Retrieves appointments from the remote API.
+     * 
+     * @return Flow that emits Resource states:
+     *   - Loading: Emitted initially while the request is in progress
+     *   - Success: Contains the list of appointments if the request succeeds
+     *   - Error: Contains HTTP error code and message if the request fails
+     *   - Exception: Contains the exception if a network or other error occurs
+     */
     override fun getAppointments(): Flow<Resource<List<Appointment>>> = flow {
         emit(Resource.Loading)
         val resource = try {

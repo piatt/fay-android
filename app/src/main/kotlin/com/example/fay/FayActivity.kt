@@ -21,6 +21,11 @@ class FayActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val state by viewModel.state.collectAsStateWithLifecycle()
+            /**
+             * Waiting until loading is false allows the current auth token
+             * to be fetched and emitted, if it exists. Otherwise, the user will see
+             * the LoginScreen momentarily, even if they are already authenticated.
+             */
             splashScreen.setKeepOnScreenCondition { state.loading }
             FayApp(
                 state = state,

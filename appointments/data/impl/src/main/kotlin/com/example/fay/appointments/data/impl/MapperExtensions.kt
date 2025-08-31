@@ -31,6 +31,11 @@ private fun String?.toAppointmentStatus(): AppointmentStatus {
     }
 }
 
+/**
+ * Parses an ISO date-time string and converts it to the system's default timezone.
+ * 
+ * @return ZonedDateTime in system default timezone, or current time if parsing fails or input is null/blank
+ */
 private fun String?.toZonedDateTime(): ZonedDateTime {
     return if (this.isNullOrBlank()) {
         ZonedDateTime.now()

@@ -15,6 +15,12 @@ fun getFilteredAppointmentsUseCase(
         .map { it.toAppointmentState() }
 }
 
+/**
+ * Converts an Appointment domain object to AppointmentState for UI display.
+ * Formats the appointment with local timezone-adjusted time ranges and readable date components.
+ * 
+ * @return AppointmentState with formatted month, day, and time range including timezone abbreviation
+ */
 private fun Appointment.toAppointmentState(): AppointmentState {
     val timeFormatter = DateTimeFormatter.ofPattern("h:mm a")
     val timezoneAbbreviation = start.zone.getDisplayName(TextStyle.SHORT, Locale.getDefault())

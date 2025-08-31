@@ -30,6 +30,13 @@ class AppointmentsViewModel @Inject constructor(
         initialValue = AppointmentsUiState()
     )
 
+    /**
+     * Refreshes appointments data from the repository and updates the UI state.
+     * Fetches appointments and filters them into upcoming and past categories.
+     * Updates loading, success, and error states appropriately.
+     *
+     * @see AppointmentsRepository.getAppointments
+     */
     fun refresh() {
         viewModelScope.launch {
             appointmentsRepository.getAppointments().collect { resource ->

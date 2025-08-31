@@ -25,6 +25,12 @@ class LoginViewModel @Inject constructor(
         initialValue = LoginUiState()
     )
 
+    /**
+     * Attempts to authenticate the user with provided credentials.
+     * Updates the UI state based on the authentication result.
+     *
+     * @see AuthRepository.login
+     */
     fun login(email: String, password: String) {
         viewModelScope.launch {
             authRepository.login(email, password).collect { resource ->
@@ -45,7 +51,7 @@ class LoginViewModel @Inject constructor(
             }
         }
     }
-
+    
     fun clearError() {
         _uiState.update {
             it.copy(errorMessage = null)
