@@ -4,7 +4,7 @@ import com.example.fay.core.navigation.BottomNavItem
 
 class AppointmentsNavItem : BottomNavItem(
     appRoute = AppointmentsRoute,
-    label = R.string.appointments_label,
-    icon = R.drawable.ic_calendar,
-    selectedIcon = R.drawable.ic_calendar_filled
+    labelResId = R.string.appointments_label,
+    iconResId = R.drawable.ic_calendar,
+    selectedIconResId = R.drawable.ic_calendar_filled
 )

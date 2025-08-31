@@ -1,11 +1,8 @@
 package com.example.fay.core.navigation
 
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-
 open class BottomNavItem(
     val appRoute: AppRoute,
-    @StringRes val label: Int,
-    @DrawableRes val icon: Int,
-    @DrawableRes val selectedIcon: Int
+    val labelResId: Int,
+    val iconResId: Int,
+    val selectedIconResId: Int
 )

@@ -4,7 +4,7 @@ import com.example.fay.core.navigation.BottomNavItem
 
 class ProfileNavItem : BottomNavItem(
     appRoute = ProfileRoute,
-    label = R.string.profile_label,
-    icon = R.drawable.ic_user,
-    selectedIcon = R.drawable.ic_user_filled
+    labelResId = R.string.profile_label,
+    iconResId = R.drawable.ic_user,
+    selectedIconResId = R.drawable.ic_user_filled
 )

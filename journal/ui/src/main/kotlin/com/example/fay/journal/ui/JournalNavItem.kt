@@ -4,7 +4,7 @@ import com.example.fay.core.navigation.BottomNavItem
 
 class JournalNavItem : BottomNavItem(
     appRoute = JournalRoute,
-    label = R.string.journal_label,
-    icon = R.drawable.ic_journal,
-    selectedIcon = R.drawable.ic_journal_filled
+    labelResId = R.string.journal_label,
+    iconResId = R.drawable.ic_journal,
+    selectedIconResId = R.drawable.ic_journal_filled
 )

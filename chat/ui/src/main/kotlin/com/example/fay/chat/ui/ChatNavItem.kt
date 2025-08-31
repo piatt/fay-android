@@ -4,7 +4,7 @@ import com.example.fay.core.navigation.BottomNavItem
 
 class ChatNavItem : BottomNavItem(
     appRoute = ChatRoute,
-    label = R.string.chat_label,
-    icon = R.drawable.ic_chat,
-    selectedIcon = R.drawable.ic_chat_filled
+    labelResId = R.string.chat_label,
+    iconResId = R.drawable.ic_chat,
+    selectedIconResId = R.drawable.ic_chat_filled
 )

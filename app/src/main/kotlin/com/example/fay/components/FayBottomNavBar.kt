@@ -37,13 +37,13 @@ fun FayBottomNavBar(navController: NavHostController) {
                 icon = {
                     Icon(
                         painter = painterResource(
-                            id = if (selected) item.selectedIcon else item.icon
+                            id = if (selected) item.selectedIconResId else item.iconResId
                         ),
-                        contentDescription = stringResource(item.label)
+                        contentDescription = stringResource(item.labelResId)
                     )
                 },
                 label = {
-                    Text(text = stringResource(item.label))
+                    Text(text = stringResource(item.labelResId))
                 },
                 selected = selected,
                 onClick = {
