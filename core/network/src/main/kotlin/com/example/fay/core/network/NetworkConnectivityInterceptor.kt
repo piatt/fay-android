@@ -7,8 +7,6 @@ import androidx.core.content.ContextCompat.getSystemService
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.io.IOException
-import kotlin.jvm.java
-import kotlin.let
 
 /**
  * Checks for an active network connection before proceeding with any

@@ -8,10 +8,9 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-
-private val FayPrimary = Color(0xFF6874E8)
+import androidx.compose.ui.res.colorResource
+import com.example.fay.core.ui.R
 
 @Composable
 fun FayTheme(
@@ -24,8 +23,8 @@ fun FayTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
-        darkTheme -> darkColorScheme(primary = FayPrimary)
-        else -> lightColorScheme(primary = FayPrimary)
+        darkTheme -> darkColorScheme(primary = colorResource(R.color.fay_primary))
+        else -> lightColorScheme(primary = colorResource(R.color.fay_primary))
     }
     MaterialTheme(
         colorScheme = colorScheme,

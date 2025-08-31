@@ -5,7 +5,6 @@ import com.example.fay.appointments.data.api.AppointmentStatus
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
 import java.util.Locale
-import kotlin.collections.filter
 
 fun getFilteredAppointmentsUseCase(
     appointments: List<Appointment>,
