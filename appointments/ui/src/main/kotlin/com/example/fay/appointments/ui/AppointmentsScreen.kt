@@ -32,8 +32,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -70,7 +68,10 @@ fun AppointmentsScreen(
                             contentDescription = stringResource(R.string.new_appointment_description)
                         )
                         Spacer(Modifier.padding(4.dp))
-                        Text(text = stringResource(R.string.new_appointment_button_label))
+                        Text(
+                            text = stringResource(R.string.new_appointment_button_label),
+                            fontWeight = FontWeight.Bold
+                        )
                     }
                 },
                 modifier = Modifier.padding(horizontal = 16.dp)
@@ -118,9 +119,7 @@ fun AppointmentsScreen(
                     }
                     HorizontalPager(
                         state = pagerState,
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(top = 16.dp)
+                        modifier = Modifier.fillMaxSize()
                     ) { page ->
                         when (page) {
                             0 -> AppointmentsList(
@@ -148,14 +147,14 @@ private fun AppointmentsList(
     if (appointments.isEmpty()) {
         CenteredCallout(
             image = R.drawable.ic_calendar,
-            message = stringResource(R.string.coming_soon_label)
+            message = stringResource(R.string.coming_soon_label),
+            modifier = modifier
         )
     } else {
         LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(horizontal = 16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            modifier = modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.spacedBy(16.dp),
+            contentPadding = PaddingValues(16.dp)
         ) {
             itemsIndexed(
                 items = appointments,
@@ -224,7 +223,6 @@ private fun AppointmentCardContent(
                 Text(
                     text = appointment.formattedMonth,
                     style = MaterialTheme.typography.labelMedium,
-                    color = colorResource(com.example.fay.core.ui.R.color.fay_primary),
                     fontWeight = FontWeight.Medium
                 )
                 Text(
@@ -245,8 +243,7 @@ private fun AppointmentCardContent(
                 Spacer(modifier = Modifier.height(4.dp))
                 Text(
                     text = appointment.description,
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = Color.Gray
+                    style = MaterialTheme.typography.bodyMedium
                 )
             }
         }
