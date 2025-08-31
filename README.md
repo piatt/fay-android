@@ -1,4 +1,4 @@
-*** FAY ANDROID TAKE-HOME PROJECT ***
+### FAY ANDROID TAKE-HOME PROJECT
 
 ## Instructions
 * Open the fay-android project with Android Studio
@@ -14,6 +14,8 @@
     - Log out from the profile screen and observe the clean transition back to login
 * Run the unit tests
 * Browse the code
+* Watch the demo (video)[https://drive.google.com/file/d/1zBwQpreh-OMbkSV74_tMB0h-16BrCv1k/view?usp=drive_link],
+  where I screen recorded myself walking through some of the user journeys and testing authentication and network connectivity cases.
 
 ## Notes
 Here is a brief explanation of my choices of dependencies:
@@ -105,6 +107,7 @@ Final notes:
 * I added code comments to explain important methods and properties as necessary, citing sources where applicable.
 * I hope you enjoy reading my code. I strive for concise and minimalistic code, while holding myself to a high standard of organization, efficiency, and testability.
 * Although the scope of this exercise does not require a fully polished app, I hope I've been able to showcase some of my skills, as well as the thought process behind them.
-* I've included a demo video where I screen recorded myself walking through some of the user journeys and testing authentication and network connectivity cases. I look forward to hearing your feedback!
+* I definitely spent more time on this project than I normally would on a take-home, but what I hope sets me apart is that I've created something that is closer to production-ready
+  and something that can easily scale, given the foundations put in place. I look forward to hearing the team's feedback!
 
 -Benjamin Piatt
