@@ -42,4 +42,13 @@ dependencies {
     implementation(libs.kotlin.serialization)
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
+    
+    testImplementation(libs.junit5)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlin.coroutines.test)
+    testImplementation(libs.turbine)
+    testImplementation(libs.kotlin.test)
+}
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

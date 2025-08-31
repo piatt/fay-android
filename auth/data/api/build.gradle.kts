@@ -14,4 +14,13 @@ dependencies {
     implementation(project(":core:data"))
     implementation(libs.kotlin.coroutines.core)
     implementation(libs.okhttp)
+    
+    testImplementation(libs.junit5)
+    testImplementation(libs.mockk)
+    testImplementation(libs.kotlin.coroutines.test)
+    testImplementation(libs.kotlin.test)
+    testImplementation(libs.okhttp.mock.web.server)
+}
+tasks.withType<Test> {
+    useJUnitPlatform()
 }

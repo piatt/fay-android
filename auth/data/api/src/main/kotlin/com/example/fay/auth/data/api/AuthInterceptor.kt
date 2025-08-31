@@ -17,12 +17,18 @@ class AuthInterceptor(private val authRepository: AuthRepository) : Interceptor 
      */
     override fun intercept(chain: Interceptor.Chain): Response {
         val originalRequest = chain.request()
-        val authToken = runBlocking { authRepository.getAuthToken() }
-        return authToken?.let {
+        val authToken = try {
+            runBlocking { authRepository.getAuthToken() }
+        } catch (_: Exception) {
+            null
+        }
+        return if (authToken != null && authToken.isNotEmpty()) {
             val authenticatedRequest = originalRequest.newBuilder()
-                .header("Authorization", "Bearer $it")
+                .header("Authorization", "Bearer $authToken")
                 .build()
             chain.proceed(authenticatedRequest)
-        } ?: chain.proceed(originalRequest)
+        } else {
+            chain.proceed(originalRequest)
+        }
     }
 }
