@@ -124,11 +124,13 @@ fun AppointmentsScreen(
                         when (page) {
                             0 -> AppointmentsList(
                                 appointments = state.upcomingAppointments,
-                                highlightFirstAppointment = true
+                                highlightFirstAppointment = true,
+                                loading = state.loading
                             )
                             1 -> AppointmentsList(
                                 appointments = state.pastAppointments,
-                                highlightFirstAppointment = false
+                                highlightFirstAppointment = false,
+                                loading = state.loading
                             )
                         }
                     }
@@ -142,12 +144,13 @@ fun AppointmentsScreen(
 private fun AppointmentsList(
     appointments: List<AppointmentState>,
     highlightFirstAppointment: Boolean,
+    loading: Boolean,
     modifier: Modifier = Modifier
 ) {
-    if (appointments.isEmpty()) {
+    if (!loading && appointments.isEmpty()) {
         CenteredCallout(
             image = R.drawable.ic_calendar,
-            message = stringResource(R.string.coming_soon_label),
+            message = "",
             modifier = modifier
         )
     } else {

@@ -2,7 +2,8 @@ package com.example.fay.appointments.data.impl
 
 import com.example.fay.appointments.data.api.Appointment
 import com.example.fay.appointments.data.api.AppointmentStatus
-import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 fun AppointmentResponse.toAppointment(): Appointment? {
@@ -15,8 +16,8 @@ fun AppointmentResponse.toAppointment(): Appointment? {
             status = status.toAppointmentStatus(),
             type = appointment_type ?: "",
             recurrenceType = recurrence_type ?: "",
-            start = start.parseToLocalDateTime(),
-            end = end.parseToLocalDateTime(),
+            start = start.toZonedDateTime(),
+            end = end.toZonedDateTime(),
             duration = duration_in_minutes ?: 0
         )
     } else null
@@ -30,14 +31,15 @@ private fun String?.toAppointmentStatus(): AppointmentStatus {
     }
 }
 
-private fun String?.parseToLocalDateTime(): LocalDateTime {
+private fun String?.toZonedDateTime(): ZonedDateTime {
     return if (this.isNullOrBlank()) {
-        LocalDateTime.now()
+        ZonedDateTime.now()
     } else {
         try {
-            LocalDateTime.parse(this, DateTimeFormatter.ISO_DATE_TIME)
-        } catch (e: Exception) {
-            LocalDateTime.now()
+            val zonedDateTime = ZonedDateTime.parse(this, DateTimeFormatter.ISO_DATE_TIME)
+            zonedDateTime.withZoneSameInstant(ZoneId.systemDefault())
+        } catch (_: Exception) {
+            ZonedDateTime.now()
         }
     }
 }

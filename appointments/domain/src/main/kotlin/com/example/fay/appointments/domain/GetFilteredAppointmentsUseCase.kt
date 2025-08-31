@@ -18,9 +18,10 @@ fun getFilteredAppointmentsUseCase(
 
 private fun Appointment.toAppointmentState(): AppointmentState {
     val timeFormatter = DateTimeFormatter.ofPattern("h:mm a")
+    val timezoneAbbreviation = start.zone.getDisplayName(TextStyle.SHORT, Locale.getDefault())
     val formattedMonth = start.month.getDisplayName(TextStyle.SHORT, Locale.getDefault()).uppercase()
     val formattedDay = start.dayOfMonth.toString()
-    val formattedTimeRange = "${start.format(timeFormatter)} - ${end.format(timeFormatter)} (PT)"
+    val formattedTimeRange = "${start.format(timeFormatter)} - ${end.format(timeFormatter)} ($timezoneAbbreviation)"
 
     return AppointmentState(
         id = id,

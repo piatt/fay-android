@@ -1,6 +1,6 @@
 package com.example.fay.appointments.data.api
 
-import java.time.LocalDateTime
+import java.time.ZonedDateTime
 
 data class Appointment(
     val id: String,
@@ -10,7 +10,7 @@ data class Appointment(
     val status: AppointmentStatus,
     val type: String,
     val recurrenceType: String,
-    val start: LocalDateTime,
-    val end: LocalDateTime,
+    val start: ZonedDateTime,
+    val end: ZonedDateTime,
     val duration: Int
 )
